@@ -1,0 +1,21 @@
+{
+  "name": "Insurance Yeti",
+  "short_name": "Insurance Yeti",
+  "description": "Find affordable healthcare plans with Insurance Yeti. Compare health insurance options and get coverage that fits your needs and budget.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2dd4a8",
+  "icons": [
+    {
+      "src": "/icon-light-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
