@@ -1,20 +1,34 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
 
-export default function ThankYouPage() {
+function ThankYouContent() {
+  const searchParams = useSearchParams()
+  const nameParam = searchParams.get("name") || ""
+  const [firstName, setFirstName] = useState("")
+
   useEffect(() => {
     document.title = "Thank You | Insurance Yeti"
   }, [])
+
+  useEffect(() => {
+    if (nameParam) {
+      const formatted = nameParam.charAt(0).toUpperCase() + nameParam.slice(1).toLowerCase()
+      setFirstName(formatted)
+    }
+  }, [nameParam])
+
+  const greetingName = firstName ? firstName.toUpperCase() : "CONGRATS"
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Wistia Scripts */}
       <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
-      
+
       {/* Header */}
       <header className="bg-slate-900 py-4 md:py-5 border-b border-slate-800">
         <div className="container mx-auto px-5 flex justify-center">
@@ -37,25 +51,27 @@ export default function ThankYouPage() {
         <section className="bg-slate-900 py-10 md:py-14">
           <div className="container mx-auto px-5">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                Based On Your Answers, You Qualify For Better Health Coverage For Up To 30% Less!
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">
+                {greetingName}, YOU QUALIFY TO SAVE UP TO 31% ON HEALTH INSURANCE
               </h1>
-              
-              <p className="text-slate-300 text-lg mb-8">
-                Watch the video below for the next steps
-              </p>
 
-              {/* Main Video */}
-              <div className="rounded-2xl overflow-hidden shadow-2xl bg-slate-800">
-                <div 
-                  dangerouslySetInnerHTML={{
-                    __html: `
-                      <script src="https://fast.wistia.com/embed/t36movf8bl.js" async type="module"></script>
-                      <style>wistia-player[media-id='t36movf8bl']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/t36movf8bl/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
-                      <wistia-player media-id="t36movf8bl" aspect="1.7777777777777777"></wistia-player>
-                    `
-                  }}
-                />
+              <h2 className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8 md:mb-10">
+                An agent will be calling or texting you to go through these options. No obligation, just information.
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto">
+                {[
+                  "Free Consultation",
+                  "Licensed, Non-Pushy Agent",
+                  "200,000+ Families Saved On Coverage",
+                ].map((label) => (
+                  <div key={label} className="flex flex-col items-center gap-2 text-center">
+                    <svg className="h-7 w-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-sm md:text-base text-slate-200 font-medium">{label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -190,5 +206,13 @@ export default function ThankYouPage() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-900" />}>
+      <ThankYouContent />
+    </Suspense>
   )
 }

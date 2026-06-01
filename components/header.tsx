@@ -33,9 +33,6 @@ export function Header() {
             <Link href="#how-it-works" className="text-slate-300 hover:text-primary transition-colors">
               How It Works
             </Link>
-            <Link href="#enrollment" className="text-slate-300 hover:text-primary transition-colors">
-              Open Enrollment
-            </Link>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
@@ -62,10 +59,7 @@ export function Header() {
               <Link href="#how-it-works" className="text-slate-300 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
                 How It Works
               </Link>
-              <Link href="#enrollment" className="text-slate-300 hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-                Open Enrollment
-              </Link>
-              <Button 
+              <Button
                 className="w-full" 
                 onClick={() => {
                   setIsMenuOpen(false)

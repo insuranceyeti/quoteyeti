@@ -184,24 +184,38 @@ export function HeroSectionV2({ initialState }: HeroSectionV2Props) {
             </form>
           </div>
 
-          <div className="mt-10 grid grid-cols-3 gap-4 max-w-md mx-auto text-center">
-            <div className="flex flex-col items-center gap-1.5">
-              <svg className="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          <div className="mt-12 max-w-4xl mx-auto">
+            <div className="flex items-start sm:items-center justify-center gap-2 text-slate-200 text-sm md:text-base mb-2">
+              <svg className="h-5 w-5 text-primary flex-shrink-0 mt-0.5 sm:mt-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span className="text-sm text-slate-300">Free Consultation</span>
+              <span>
+                We&apos;ve helped <strong className="font-semibold text-white">thousands of people</strong>
+                {state ? ` from ${state}` : ""}.
+              </span>
             </div>
-            <div className="flex flex-col items-center gap-1.5">
-              <svg className="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm text-slate-300">Licensed Agents</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5">
-              <svg className="h-6 w-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm text-slate-300">No Obligation</span>
+            <p className="text-slate-300 text-sm md:text-base text-center max-w-3xl mx-auto mb-6">
+              We offer access to a variety of plans via our trusted agent network. Options include major medical, short-term, indemnity, &amp; more.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              {[
+                { src: "/logos/ushealth.svg", alt: "USHealth Advisors" },
+                { src: "/logos/unitedhealthcare.svg", alt: "United Healthcare" },
+                { src: "/logos/healthmarkets.png", alt: "HealthMarkets" },
+                { src: "/logos/kaiser.svg", alt: "Kaiser Permanente" },
+              ].map((logo) => (
+                <div
+                  key={logo.alt}
+                  className="bg-white rounded-lg border border-slate-200 h-20 md:h-24 flex items-center justify-center px-4"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-h-12 md:max-h-14 w-auto object-contain"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
