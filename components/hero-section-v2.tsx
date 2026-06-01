@@ -133,8 +133,8 @@ export function HeroSectionV2({ initialState }: HeroSectionV2Props) {
 
           {/* ZIP Code Form */}
           <div className="max-w-sm mx-auto w-full px-2">
-            <h2 className="text-xl md:text-2xl font-semibold text-slate-200 mb-5">
-              What is your ZIP Code?
+            <h2 className="text-xl md:text-2xl font-semibold text-slate-200 mb-5 leading-snug">
+              ENTER ZIP CODE &amp; COMPARE RATES TO FIND HOW MUCH YOU MAY SAVE!
             </h2>
             <form onSubmit={handleZipSubmit} className="space-y-4">
               <div className="relative">
@@ -178,7 +178,7 @@ export function HeroSectionV2({ initialState }: HeroSectionV2Props) {
                 {zipValidation.isValidating ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
                 ) : (
-                  "FIND PLANS"
+                  "Start my quote"
                 )}
               </Button>
             </form>
